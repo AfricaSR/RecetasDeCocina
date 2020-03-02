@@ -23,10 +23,15 @@ export class RecetasListComponent implements OnInit {
       this.recetaList = [];
       item.forEach(element => {
         let x = element.payload.toJSON();
+        
+        
         x["$key"] = element.key;
         this.recetaList.push(x as Receta);
+        
+        
       });
     });
+    
   }
 
 }
