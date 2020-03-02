@@ -1,0 +1,10 @@
+<div class="card" *ngFor="let receta of recetaList">
+    <img class="card-img-top" src="{{receta.imagen}}" />
+    <div class="card-body">
+        <h5 class="card-title title">{{receta.titulo}}</h5>
+        <p class="card-text steps">{{receta.preparacion}}</p>
+
+        <p class="card-text ingdts">{{receta.ingredientes}}</p><br>
+        <a href="#" class="btn btn-primary">Valorar</a>
+    </div>
+</div>
