@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { RecetasComponent } from './components/recetas/recetas.component';
 import { RecetasListComponent } from './components/recetas/recetas-list/recetas-list.component';
 import { RecetaComponent } from './components/recetas/receta/receta.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { RecetaService } from  './services/receta.service';
 
@@ -23,7 +24,8 @@ import { RecetaService } from  './services/receta.service';
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    FormsModule
+    FormsModule,
+    Ng2SearchPipeModule
   ],
   providers: [RecetaService],
   bootstrap: [AppComponent]

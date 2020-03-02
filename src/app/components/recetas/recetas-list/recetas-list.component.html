@@ -1,4 +1,7 @@
-<div class="card" *ngFor="let receta of recetaList">
+<div class="search-receta">
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442; Buscar..." />
+</div>
+<div class="card" *ngFor="let receta of recetaList | filter:searchText">
     <img class="card-img-top" src="{{receta.imagen}}" />
     <div class="card-body">
         <h5 class="card-title title">{{receta.titulo}}</h5>

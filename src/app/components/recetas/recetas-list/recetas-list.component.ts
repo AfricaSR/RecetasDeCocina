@@ -7,7 +7,7 @@ import { Receta } from '../../../models/receta';
   styleUrls: ['./recetas-list.component.css']
 })
 export class RecetasListComponent implements OnInit {
-
+  searchText;
   recetaList: Receta[];
 
   constructor(
@@ -15,6 +15,7 @@ export class RecetasListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.searchText = null;
     this.recetaService
     .getReceta()
     .snapshotChanges()

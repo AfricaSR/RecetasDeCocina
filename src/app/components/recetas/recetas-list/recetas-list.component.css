@@ -1,1 +1,9 @@
-.steps {}
+.form-control::placeholder {
+    font-family: FontAwesome;
+}
+
+.search-receta {
+    width: 50%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
