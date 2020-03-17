@@ -11,6 +11,9 @@ import { RecetaComponent } from './components/recetas/receta/receta.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { RecetaService } from  './services/receta.service';
+import { ReviewsComponent } from './components/reviews/reviews.component';
+import { ReviewListComponent } from './components/reviews/review-list/review-list.component';
+import { ReviewComponent } from './components/reviews/review/review.component';
 
 
 
@@ -19,7 +22,10 @@ import { RecetaService } from  './services/receta.service';
     AppComponent,
     RecetasComponent,
     RecetasListComponent,
-    RecetaComponent
+    RecetaComponent,
+    ReviewsComponent,
+    ReviewListComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,

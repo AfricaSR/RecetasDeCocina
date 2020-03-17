@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Receta } from '../models/receta';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { Review } from '../models/review';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,10 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 export class RecetaService {
 
   recetaList: AngularFireList<any>;
+  reviewList: Review[];
   selectReceta: Receta = new Receta();
+
+  
 
   constructor(private firebase: AngularFireDatabase) { }
 
@@ -21,7 +25,10 @@ export class RecetaService {
       titulo: receta.titulo,
       preparacion: receta.preparacion,
       ingredientes: receta.ingredientes,
-      imagen: receta.imagen
+      imagen: receta.imagen,
+      comentarios: [],
     })
   }
+
+  //insertReview()
 }

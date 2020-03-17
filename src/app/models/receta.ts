@@ -1,8 +1,11 @@
+import { Review } from './review';
+
 export class Receta {
-    $key: number;
+    $key: string;
     titulo: string;
     preparacion: string;
     ingredientes: string;
     imagen: string;
+    comentarios: Review[];
 
 }

@@ -7,3 +7,33 @@
     margin-bottom: 5%;
     margin-top: 5%;
 }
+
+div[id^="module"],
+.ingdts {
+    width: 100%;
+    padding: 0;
+    text-align: justify;
+    margin-bottom: 5%;
+}
+
+h6 {
+    text-align: left;
+}
+
+div[id^="module"] p.collapse[aria-expanded="true"] {
+    display: block;
+    height: 40px;
+    overflow: hidden;
+}
+
+div[id^="module"] p.collapsing[aria-expanded="false"] {
+    height: 100%;
+}
+
+div[id^="module"] a.collapsed:after {
+    content: '+ Ver más';
+}
+
+div[id^="module"] a:not(.collapsed):after {
+    content: '- Ver menos';
+}

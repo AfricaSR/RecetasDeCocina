@@ -5,9 +5,19 @@
     <img class="card-img-top" src="{{receta.imagen}}" />
     <div class="card-body">
         <h5 class="card-title title">{{receta.titulo}}</h5>
-        <p class="card-text steps">{{receta.preparacion}}</p>
+        <div id="module{{receta.$key}}" class="container">
+            <h6 class="card-title">Preparación</h6>
+            <p class="collapse" id="collapseExample{{receta.$key}}" aria-expanded="false">
+                {{receta.preparacion}}
+            </p>
+            <a role="button" class="collapsed" data-toggle="collapse" href="#collapseExample{{receta.$key}}" aria-expanded="false" aria-controls="collapseExample">
+            </a>
+        </div>
 
-        <p class="card-text ingdts">{{receta.ingredientes}}</p><br>
-        <a href="#" class="btn btn-primary">Valorar</a>
+        <h6 class="card-title">Ingredientes</h6>
+        <p class="card-text ingdts">{{receta.ingredientes}}</p>
+
+        <app-reviews [receta]=receta></app-reviews>
+        <app-review></app-review>
     </div>
 </div>
