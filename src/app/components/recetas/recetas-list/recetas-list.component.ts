@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { RecetaService } from '../../../services/receta.service';
 import { Receta } from '../../../models/receta';
 import { Review } from '../../../models/review';
-import { OrderPipe } from 'ngx-order-pipe';
 import { isUndefined } from 'util';
 
 
@@ -12,16 +11,15 @@ import { isUndefined } from 'util';
   styleUrls: ['./recetas-list.component.css']
 })
 export class RecetasListComponent implements OnInit {
+
   searchText;
   recetaList: Receta[];
   reviewList: Array<Review>;
-  titulo: string = 'titulo';
-  ingredientes: string = 'ingredientes';
   selectedDevice = '0';
   constructor(
-    public recetaService: RecetaService, private orderPipe: OrderPipe
+    public recetaService: RecetaService
   ) { }
-
+  //Al iniciar se genera un array de objetos Receta con los datos extraidos de firestone en formato JSON
   ngOnInit() {
 
     this.searchText = null;
@@ -33,21 +31,20 @@ export class RecetasListComponent implements OnInit {
       item.forEach(element => {
         let x = element.payload.toJSON();
         let r = x["comentarios"];
+        /*Si el array de comentarios está indefinido (al crearse, seguro que lo está), 
+        el programa tendrá un error de puntero.
+        Así que parcheamos el error antes de que ocurra*/
+        
         if (isUndefined(r)){
           x["comentarios"] = {};
         }
         x["$key"] = element.key;
         this.recetaList.push(x as Receta);
-        
-        
       });
     });
-
-
-  
-    
   }
   
+  //Cuando cambia el select del orden, se reorganiza el array de elementos
   onChange(newValue) {
 
     switch (newValue){

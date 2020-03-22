@@ -9,6 +9,7 @@ import { Receta } from '../../models/receta';
   styleUrls: ['./reviews.component.css']
 })
 export class ReviewsComponent implements OnInit {
+  //Para imprimir la lista de reviews de una receta se importa el componente Receta dentro del Review-list
   @Input() receta: Receta;
   public reviewList: Review[];
   constructor() { }

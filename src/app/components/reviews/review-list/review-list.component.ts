@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Review} from '../../../models/review';
-import { Receta } from '../../../models/receta';
 
 @Component({
   selector: 'app-review-list',

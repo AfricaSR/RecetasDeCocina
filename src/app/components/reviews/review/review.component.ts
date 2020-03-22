@@ -11,6 +11,7 @@ import { RecetaService } from '../../../services/receta.service';
   styleUrls: ['./review.component.css']
 })
 export class ReviewComponent implements OnInit {
+  //Para referenciar una review con su respectiva receta, hay que importar el componente Receta en Reviews
   @Input() receta: Receta;
   public review: Review;
   constructor(public recetaService: RecetaService) { }

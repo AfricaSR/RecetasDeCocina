@@ -13,14 +13,16 @@ export class RecetaService {
   selectReceta: Receta = new Receta();
   selectReview: Review = new Review();
 
-  
+  //El primer paso es llamar a los datos que se encuentran en la base de datos alojada en firestone
 
   constructor(private firebase: AngularFireDatabase) { }
 
+  //Recibe las recetas de la lista almacenadas en la base de datos
   getReceta(){
     return this.recetaList = this.firebase.list('recetas');
   }
 
+  //Genera una receta nueva a partir de los datos introducidos en el formulario de creación
   insertReseta(receta: Receta){
     this.recetaList.push({
       titulo: receta.titulo,
@@ -31,6 +33,7 @@ export class RecetaService {
     })
   }
 
+  //Reemplaza el array de reviews de la receta por uno que incluya la nueva review realizada
   insertReview(receta: Receta, review: Review){
     
     this.reviewList = Object.values(receta.comentarios);
