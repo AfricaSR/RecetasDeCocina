@@ -2,10 +2,24 @@
     font-family: FontAwesome;
 }
 
+.receta {
+    display: flex;
+}
+
 .search-receta {
-    width: 50%;
+    width: 45%;
     margin-bottom: 5%;
     margin-top: 5%;
+    margin-right: 5%;
+    display: flex;
+}
+
+.receta>div:nth-child(2) {
+    width: 45%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    margin-left: 5%;
+    display: flex;
 }
 
 div[id^="pills-home"],
