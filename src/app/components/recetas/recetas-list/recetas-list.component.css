@@ -8,7 +8,7 @@
     margin-top: 5%;
 }
 
-div[id^="module"],
+div[id^="pills-home"],
 .ingdts {
     width: 100%;
     padding: 0;
@@ -20,20 +20,20 @@ h6 {
     text-align: left;
 }
 
-div[id^="module"] p.collapse[aria-expanded="true"] {
+div[id^="pills-home"] p.collapse[aria-expanded="true"] {
     display: block;
     height: 40px;
     overflow: hidden;
 }
 
-div[id^="module"] p.collapsing[aria-expanded="false"] {
+div[id^="pills-home"] p.collapsing[aria-expanded="false"] {
     height: 100%;
 }
 
-div[id^="module"] a.collapsed:after {
+div[id^="pills-home"] a.collapsed:after {
     content: '+ Ver más';
 }
 
-div[id^="module"] a:not(.collapsed):after {
+div[id^="pills-home"] a:not(.collapsed):after {
     content: '- Ver menos';
 }

@@ -5,19 +5,33 @@
     <img class="card-img-top" src="{{receta.imagen}}" />
     <div class="card-body">
         <h5 class="card-title title">{{receta.titulo}}</h5>
-        <div id="module{{receta.$key}}" class="container">
-            <h6 class="card-title">Preparación</h6>
-            <p class="collapse" id="collapseExample{{receta.$key}}" aria-expanded="false">
-                {{receta.preparacion}}
-            </p>
-            <a role="button" class="collapsed" data-toggle="collapse" href="#collapseExample{{receta.$key}}" aria-expanded="false" aria-controls="collapseExample">
-            </a>
+
+        <ul class="nav nav-pills mb-3" id="pills-tab{{receta.$key}}" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="pills-home-tab{{receta.$key}}" data-toggle="pill" href="#pills-home{{receta.$key}}" role="tab" aria-controls="pills-home" aria-selected="true">Detalles</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-profile-tab{{receta.$key}}" data-toggle="pill" href="#pills-profile{{receta.$key}}" role="tab" aria-controls="pills-profile" aria-selected="false">Comentarios</a>
+            </li>
+
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home{{receta.$key}}" role="tabpanel" aria-labelledby="pills-home-tab">
+                <h6 class="card-title">Preparación</h6>
+                <p class="collapse" id="collapseExample{{receta.$key}}" aria-expanded="false">
+                    {{receta.preparacion}}
+                </p>
+                <a role="button" class="collapsed" data-toggle="collapse" href="#collapseExample{{receta.$key}}" aria-expanded="false" aria-controls="collapseExample">
+                </a>
+                <h6 class="card-title">Ingredientes</h6>
+                <p class="card-text ingdts">{{receta.ingredientes}}</p>
+            </div>
+            <div class="tab-pane fade" id="pills-profile{{receta.$key}}" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <app-reviews [receta]=receta></app-reviews>
+                <app-review [receta]=receta></app-review>
+            </div>
+
         </div>
 
-        <h6 class="card-title">Ingredientes</h6>
-        <p class="card-text ingdts">{{receta.ingredientes}}</p>
-
-        <app-reviews [receta]=receta></app-reviews>
-        <app-review></app-review>
     </div>
 </div>

@@ -1,5 +1,5 @@
 export class Review {
-    estrellas: number;
+    estrellas: String;
     comentario: String;
-    fecha: Date;
+    fecha: String;
 }

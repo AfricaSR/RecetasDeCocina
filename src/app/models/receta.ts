@@ -6,6 +6,6 @@ export class Receta {
     preparacion: string;
     ingredientes: string;
     imagen: string;
-    comentarios: Review[];
+    comentarios: Array<Review>;
 
 }

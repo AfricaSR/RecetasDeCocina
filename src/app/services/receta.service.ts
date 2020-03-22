@@ -9,8 +9,9 @@ import { Review } from '../models/review';
 export class RecetaService {
 
   recetaList: AngularFireList<any>;
-  reviewList: Review[];
+  reviewList: Array<Review>;
   selectReceta: Receta = new Receta();
+  selectReview: Review = new Review();
 
   
 
@@ -30,5 +31,20 @@ export class RecetaService {
     })
   }
 
-  //insertReview()
+  insertReview(receta: Receta, review: Review){
+    
+    this.reviewList = Object.values(receta.comentarios);
+    
+    
+    this.reviewList.push(review);
+
+    let r = new Receta();
+    r.imagen = receta.imagen;
+    r.comentarios = this.reviewList;
+    r.ingredientes = receta.ingredientes;
+    r.preparacion = receta.preparacion;
+    r.titulo = receta.titulo;
+    this.recetaList.set(receta.$key, r);
+    
+  }
 }
