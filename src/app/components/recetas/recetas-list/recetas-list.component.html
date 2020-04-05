@@ -1,70 +1,127 @@
 <div class="form-group receta">
+
     <div class="search-receta">
-        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="on" placeholder="&#61442; Buscar..." />
+
+        <input class="form-control" type="text" name="search" 
+        [(ngModel)]="searchText" autocomplete="on" placeholder="&#61442; Buscar..." />
+
     </div>
+
     <div class="input-group">
-        <select class="custom-select" [ngModel]="selectedDevice" (ngModelChange)="onChange($event)" name="order">
+
+        <select class="custom-select" [ngModel]="selectedDevice" 
+        (ngModelChange)="onChange($event)" name="order">
+
             <option selected value="1">Nombre ascendente</option>
             <option value="2">Nombre descendente</option>
             <option value="3">Ingredientes ascendente</option>
             <option value="4">Ingredientes descendente</option>
+
         </select>
+
     </div>
+
 </div>
+
 <div class="card" *ngFor="let receta of recetaList | filter:searchText">
+
     <img class="card-img-top" src="{{receta.imagen}}" />
+
     <div class="card-body">
+
         <h5 class="card-title title">{{receta.titulo}}</h5>
 
         <ul class="nav nav-pills mb-3" id="pills-tab{{receta.$key}}" role="tablist">
+
             <li class="nav-item">
-                <a class="nav-link active" id="pills-home-tab{{receta.$key}}" data-toggle="pill" href="#pills-home{{receta.$key}}" role="tab" aria-controls="pills-home" aria-selected="true">Detalles</a>
+
+                <a class="nav-link active" id="pills-home-tab{{receta.$key}}" data-toggle="pill"
+                 href="#pills-home{{receta.$key}}" role="tab" aria-controls="pills-home" 
+                 aria-selected="true">Detalles</a>
+            
             </li>
+
             <li class="nav-item">
-                <a class="nav-link" id="pills-profile-tab{{receta.$key}}" data-toggle="pill" href="#pills-profile{{receta.$key}}" role="tab" aria-controls="pills-profile" aria-selected="false">Comentarios</a>
+
+                <a class="nav-link" id="pills-profile-tab{{receta.$key}}" data-toggle="pill" 
+                href="#pills-profile{{receta.$key}}" role="tab" aria-controls="pills-profile" 
+                aria-selected="false">Comentarios</a>
+            
             </li>
 
         </ul>
 
         <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-home{{receta.$key}}" role="tabpanel" aria-labelledby="pills-home-tab">
+
+            <div class="tab-pane fade show active" id="pills-home{{receta.$key}}" 
+            role="tabpanel" aria-labelledby="pills-home-tab">
+
                 <form #editForm="ngForm" (ngSubmit)="onSubmit(editForm, receta.$key)">
+
                     <h6 class="card-title">Preparación</h6>
+
                     <div class="form-group">
-                        <p class="collapse" id="collapseExample{{receta.$key}}" aria-expanded="false" *ngIf="editId != receta.$key || !edit">
-                            {{receta.preparacion}}
-                        </p>
-                        <a role="button" class="collapsed" id="col{{receta.$key}}" data-toggle="collapse" href="#collapseExample{{receta.$key}}" aria-expanded="false" aria-controls="collapseExample" *ngIf="editId != receta.$key || !edit">
-                        </a>
-                        <textarea name="preparacion" class="md-textarea form-control" id="preparacion{{receta.$key}}" rows="5" 
+
+                        <p class="collapse" id="collapseExample{{receta.$key}}" 
+                        aria-expanded="false" *ngIf="editId != receta.$key || !edit">
+                        {{receta.preparacion}}</p>
+
+                        <a role="button" class="collapsed" id="col{{receta.$key}}" 
+                        data-toggle="collapse" href="#collapseExample{{receta.$key}}" 
+                        aria-expanded="false" aria-controls="collapseExample" 
+                        *ngIf="editId != receta.$key || !edit"></a>
+
+                        <textarea name="preparacion" class="md-textarea form-control" 
+                        id="preparacion{{receta.$key}}" rows="5" 
                         *ngIf="editId == receta.$key && edit" [(ngModel)]="editPrep"></textarea>
+
                     </div>
+
                     <h6 class="card-title">Ingredientes</h6>
-                    <p class="card-text ingdts" id="ingredientes{{receta.$key}}" *ngIf="editId != receta.$key || !edit">{{receta.ingredientes}}</p>
+
+                    <p class="card-text ingdts" id="ingredientes{{receta.$key}}" 
+                    *ngIf="editId != receta.$key || !edit">{{receta.ingredientes}}</p>
             
-                        <textarea name="ingredientes" class="md-textarea form-control" id="ingredientesU{{receta.$key}}" rows="5" 
+                        <textarea name="ingredientes" class="md-textarea form-control" 
+                        id="ingredientesU{{receta.$key}}" rows="5" 
                          *ngIf="editId == receta.$key && edit" [(ngModel)]="editIng"></textarea>
 
-                    <div class="form-control upde" id="updeT{{receta.$key}}" *ngIf="editId != receta.$key || !edit">
-                        <button type="button" class="btn btn-warning" (click)="editR(receta.$key)"><i class="i">&#xf040;</i>Editar</button>
-                        <button type="button" class="btn btn-danger" (click)="borrarR(receta.$key)"><i class="i">&#xf1f8;</i>Eliminar</button>
+                    <div class="form-control upde" id="updeT{{receta.$key}}" 
+                    *ngIf="editId != receta.$key || !edit">
+
+                        <button type="button" class="btn btn-warning" 
+                        (click)="editR(receta.$key)">
+                        <i class="i">&#xf040;</i>Editar</button>
+
+                        <button type="button" class="btn btn-danger" 
+                        (click)="borrarR(receta.$key)">
+                        <i class="i">&#xf1f8;</i>Eliminar</button>
+
                     </div>
-                    <div class="form-control upde" id="updeF{{receta.$key}}" *ngIf="editId == receta.$key && edit">
+
+                    <div class="form-control upde" id="updeF{{receta.$key}}" 
+                    *ngIf="editId == receta.$key && edit">
+
                         <input type="submit" class="btn btn-success" value="Guardar"/>
-                        <button type="button" class="btn btn-info" (click)="editR(receta.$key)">Cancelar</button>
+                        <button type="button" class="btn btn-info" 
+                        (click)="editR(receta.$key)">Cancelar</button>
+
                     </div>
+
                 </form>
-            <!--
-                <button type="button" class="btn btn-warning" (click)="getNavigation('update', product.p_id)">Editar</button>
-                <button type="button" class="btn btn-danger" (click)="deleteProduct(product.p_id)">Eliminar</button>
-            -->
+
             </div>
-            <div class="tab-pane fade" id="pills-profile{{receta.$key}}" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+            <div class="tab-pane fade" id="pills-profile{{receta.$key}}" 
+            role="tabpanel" aria-labelledby="pills-profile-tab">
+
                 <app-reviews [receta]=receta></app-reviews>
                 <app-review [receta]=receta></app-review>
+
             </div>
             
         </div>
 
     </div>
+    
 </div>

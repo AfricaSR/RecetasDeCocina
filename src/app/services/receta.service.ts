@@ -51,6 +51,7 @@ export class RecetaService {
     
   }
 
+  //Actualiza la receta
   updateReceta(receta: Receta) {
     
     let r = new Receta();
@@ -62,6 +63,8 @@ export class RecetaService {
 
     this.recetaList.set(receta.$key, r);
 }
+
+//Elimina la receta
 deleteReceta(receta: Receta){
   this.recetaList.remove(receta.$key);
 }

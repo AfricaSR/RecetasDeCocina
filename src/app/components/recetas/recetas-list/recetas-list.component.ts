@@ -17,7 +17,7 @@ export class RecetasListComponent implements OnInit {
   searchText;
   recetaList: Receta[];
   reviewList: Array<Review>;
-  selectedDevice = '0';
+  selectedDevice = '1';
   edit = false;
   editId = '';
   editIng = '';
@@ -74,6 +74,7 @@ export class RecetasListComponent implements OnInit {
     
   }
 
+  //Se encarga de determinar si se edita y qué se edita
   editR(id){
     this.edit = !this.edit;
 
@@ -88,16 +89,17 @@ export class RecetasListComponent implements OnInit {
 
   }
 
+  //Toma el id de la receta y la elimina de la lista de recetas
   borrarR(id){
     let r = this.recetaList.find(i => i.$key == id);
     this.recetaService.deleteReceta(r);
 
   }
 
+  //Cuando el formulario se guarda, actualiza la información de la receta
   onSubmit(editForm: NgForm, id){
     let r = this.recetaList.find(i => i.$key == id);
     r.ingredientes=editForm.value.ingredientes;
-    
     r.preparacion=editForm.value.preparacion;
     this.recetaService.updateReceta(r);
     this.editR(id);
