@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { RecetaService } from '../../../services/receta.service';
 import { Receta } from '../../../models/receta';
 import { Review } from '../../../models/review';
 import { isUndefined } from 'util';
+
 
 
 @Component({
@@ -16,6 +18,10 @@ export class RecetasListComponent implements OnInit {
   recetaList: Receta[];
   reviewList: Array<Review>;
   selectedDevice = '0';
+  edit = false;
+  editId = '';
+  editIng = '';
+  editPrep = '';
   constructor(
     public recetaService: RecetaService
   ) { }
@@ -66,5 +72,34 @@ export class RecetasListComponent implements OnInit {
     }
     this.selectedDevice = newValue;
     
-}
+  }
+
+  editR(id){
+    this.edit = !this.edit;
+
+    if (this.edit==false){
+      this.editId = '';
+    }else{
+      this.editId = id;
+      this.editIng = this.recetaList.find(i => i.$key == id).ingredientes;
+      this.editPrep = this.recetaList.find(i => i.$key == id).preparacion;
+      
+    }
+
+  }
+
+  borrarR(id){
+    let r = this.recetaList.find(i => i.$key == id);
+    this.recetaService.deleteReceta(r);
+
+  }
+
+  onSubmit(editForm: NgForm, id){
+    let r = this.recetaList.find(i => i.$key == id);
+    r.ingredientes=editForm.value.ingredientes;
+    
+    r.preparacion=editForm.value.preparacion;
+    this.recetaService.updateReceta(r);
+    this.editR(id);
+  }
 }

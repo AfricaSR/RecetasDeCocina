@@ -50,4 +50,19 @@ export class RecetaService {
     this.recetaList.set(receta.$key, r);
     
   }
+
+  updateReceta(receta: Receta) {
+    
+    let r = new Receta();
+    r.imagen = receta.imagen;
+    r.comentarios = receta.comentarios;
+    r.ingredientes = receta.ingredientes;
+    r.preparacion = receta.preparacion;
+    r.titulo = receta.titulo;
+
+    this.recetaList.set(receta.$key, r);
+}
+deleteReceta(receta: Receta){
+  this.recetaList.remove(receta.$key);
+}
 }
